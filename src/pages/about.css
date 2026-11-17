@@ -16,7 +16,13 @@
 .about-hero__title { position: relative; z-index: 3; height: 100%; display: flex; flex-direction: column; justify-content: center; gap: 8px; padding-top: 60px; }
 .about-hero__about { font-size: clamp(36px, 4vw, 56px); color: var(--orange); margin: 14px 0 0; }
 .about-hero__h1 { font-size: clamp(64px, 9vw, 136px); line-height: 0.9; }
-.about-hero__cue { display: grid; place-items: center; width: 48px; height: 48px; margin-top: 48px; border: 1.5px solid var(--orange); color: var(--orange); }
+.about-hero__cue { position: relative; display: grid; place-items: center; width: 48px; height: 48px; margin-top: 48px; border: 1.5px solid var(--orange); color: var(--orange); }
+/* scroll cue: the arrow drops and the frame sends out a ring, every 2 s */
+.about-hero__cue svg { animation: cue-drop 2s var(--ease-in-out) infinite; }
+.about-hero__cue::after { content: ""; position: absolute; inset: -1.5px; border: 1.5px solid var(--orange); animation: cue-ring 2s var(--ease-out) infinite; pointer-events: none; }
+@keyframes cue-drop { 0%, 100% { transform: translateY(-3px); opacity: 1; } 50% { transform: translateY(5px); opacity: 0.6; } }
+@keyframes cue-ring { 0% { transform: scale(1); opacity: 0.8; } 70%, 100% { transform: scale(1.6); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .about-hero__cue svg, .about-hero__cue::after { animation: none; } }
 .crumbs--light { color: rgba(255, 255, 255, 0.7); }
 .crumbs--light [aria-current] { color: var(--white); }
 

@@ -295,7 +295,7 @@ export default function Forge() {
           </div>
           <p className="body" data-reveal>Clean UI, fast spins and features players get at a glance. Everything your team needs to build, edit and run games sits in one place.</p>
         </div>
-        <div className="teams__cards" data-stagger>
+        <div className="teams__cards" data-scrub-stagger>
           {TEAMS.map(([t, d], i) => (
             <article className="team" key={t}>
               <span className="team__n">0{i + 1}</span>
@@ -304,7 +304,7 @@ export default function Forge() {
             </article>
           ))}
         </div>
-        <div className="bo" data-reveal>
+        <div className="bo" data-scrub-in="right">
           <p className="display bo__h">One back office.<br />Total control.</p>
           <ul className="bo__chips" data-stagger>
             {["Promotions and features", "In-depth reporting", "Game logs", "Player overview", "Roles and access", "Multi-operator setup"].map((c) => <li key={c}>{c}</li>)}
@@ -314,12 +314,12 @@ export default function Forge() {
 
       {/* Book a demo */}
       <section className="wrap section book" id="book">
-        <div className="stack book__copy">
-          <span className="eyebrow" data-reveal>Ready when you are</span>
-          <h2 className="h1" data-reveal>Build your<br />first game<br />in Forge.</h2>
-          <p className="body" data-reveal>Bring an idea, a theme or just questions. In 30 minutes we show you how far your team can take it, with our maths and your art.</p>
+        <div className="stack book__copy" data-scrub-in="left">
+          <span className="eyebrow">Ready when you are</span>
+          <h2 className="h1">Build your<br />first game<br />in Forge.</h2>
+          <p className="body">Bring an idea, a theme or just questions. In 30 minutes we show you how far your team can take it, with our maths and your art.</p>
         </div>
-        <div className="booking" data-reveal>
+        <div className="booking" data-scrub-in="right">
           <span className="booking__tri" aria-hidden="true" />
           <h3 className="h3">Book a demo</h3>
           <p className="booking__p">Pick a day and a time. The calendar invite lands in your inbox right away.</p>

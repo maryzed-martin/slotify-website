@@ -111,12 +111,15 @@ export default function Menu({ open, onClose, theme, onTheme }) {
         </ul>
       </nav>
 
-      <aside className="menu__feature" aria-label="Featured game">
-        <span className="tag tag--orange">Featured game</span>
-        <p className="display menu__feature-title">Lex Fortune</p>
-        <Link className="btn btn--sm" to="/games/lex-fortune" onClick={onClose}>Play demo</Link>
-      </aside>
-      <img className="menu__char" src="img/chars/char_lex_fortune.webp" alt="" />
+      {/* featured game: title, tag and button sit centred over the character */}
+      <div className="menu__stage">
+        <aside className="menu__feature" aria-label="Featured game">
+          <span className="tag tag--orange">Featured game</span>
+          <p className="display menu__feature-title">Lex Fortune</p>
+          <Link className="btn btn--sm" to="/games/lex-fortune" onClick={onClose}>Play demo</Link>
+        </aside>
+        <img className="menu__char" src="img/chars/char_lex_fortune.webp" alt="" />
+      </div>
       <Pixels right="34%" y="44%" size={14} ratio={1} dir="ur" color="var(--white)" className="menu__px" />
       <Pixels right="6%" y="68%" size={28} color="var(--orange)" className="menu__px" />
     </div>

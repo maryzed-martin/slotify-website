@@ -52,6 +52,25 @@ export function reveal(scope) {
       });
     });
 
+    // scroll-into-view groups: cards are tied to the scrollbar, each one travels further than the one before,
+    // so they arrive one after another and settle together as the section reaches the upper part of the screen
+    gsap.utils.toArray("[data-scrub-stagger]", scope).forEach((group) => {
+      [...group.children].forEach((card, i) => {
+        gsap.fromTo(card, { y: 120 + i * 90, rotation: 2 + i, autoAlpha: 0.15 }, {
+          y: 0, rotation: 0, autoAlpha: 1, ease: "power2.out",
+          scrollTrigger: { trigger: group, start: "top bottom", end: "top 45%", scrub: 0.6 },
+        });
+      });
+    });
+    // single elements that slide in from a side, tied to scroll
+    gsap.utils.toArray("[data-scrub-in]", scope).forEach((el) => {
+      const dir = el.dataset.scrubIn === "left" ? -1 : 1;
+      gsap.fromTo(el, { x: dir * 140, rotation: dir * 2, autoAlpha: 0.2 }, {
+        x: 0, rotation: 0, autoAlpha: 1, ease: "power2.out",
+        scrollTrigger: { trigger: el, start: "top bottom", end: "top 55%", scrub: 0.6 },
+      });
+    });
+
     gsap.utils.toArray("[data-img]", scope).forEach((el) => {
       const img = el.tagName === "IMG" ? el : el.querySelector("img");
       gsap.timeline({ scrollTrigger: { trigger: el, start: "top 85%", once: true } })

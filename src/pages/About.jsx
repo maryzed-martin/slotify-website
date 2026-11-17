@@ -182,7 +182,7 @@ export default function About() {
           <h2 className="h2" data-reveal>One studio.<br />Three products.</h2>
           <p className="body" data-reveal>Play the games, build your own in Forge, or let us build one for your brand.</p>
         </div>
-        <div className="products" data-stagger>
+        <div className="products" data-scrub-stagger>
           {PRODUCTS.map((p) => (
             <article key={p.t} className={`product product--${p.tone}`}>
               <div className="product__img" data-img><img src={p.img} alt="" loading="lazy" /></div>
