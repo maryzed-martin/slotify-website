@@ -40,9 +40,10 @@
 }
 .carousel__arrows button:active { transform: scale(0.95); }
 @media (hover: hover) and (pointer: fine) {
-  .carousel__arrows button:hover { background: currentColor; }
-  .carousel__arrows button:hover svg { color: var(--orange); }
-  .carousel--light .carousel__arrows button:hover svg { color: var(--ink); }
+  .carousel--light .carousel__arrows button:hover { color: var(--ink); background: var(--ink); }
+  .carousel--light .carousel__arrows button:hover svg { color: var(--orange); }
+  .carousel--dark .carousel__arrows button:hover { background: var(--white); }
+  .carousel--dark .carousel__arrows button:hover svg { color: var(--blue); }
 }
 @media (max-width: 860px) {
   .carousel__track { grid-auto-columns: 72%; }

@@ -295,9 +295,9 @@ export default function Forge() {
           </div>
           <p className="body" data-reveal>Clean UI, fast spins and features players get at a glance. Everything your team needs to build, edit and run games sits in one place.</p>
         </div>
-        <div className="teams__cards">
+        <div className="teams__cards" data-stagger>
           {TEAMS.map(([t, d], i) => (
-            <article className="team" key={t} data-reveal>
+            <article className="team" key={t}>
               <span className="team__n">0{i + 1}</span>
               <h3 className="h4">{t}</h3>
               <p className="muted">{d}</p>
@@ -306,7 +306,7 @@ export default function Forge() {
         </div>
         <div className="bo" data-reveal>
           <p className="display bo__h">One back office.<br />Total control.</p>
-          <ul className="bo__chips">
+          <ul className="bo__chips" data-stagger>
             {["Promotions and features", "In-depth reporting", "Game logs", "Player overview", "Roles and access", "Multi-operator setup"].map((c) => <li key={c}>{c}</li>)}
           </ul>
         </div>

@@ -39,6 +39,19 @@ export function reveal(scope) {
       });
     }
 
+    // card groups: the cards come in one after another, each rising from a slight tilt
+    gsap.utils.toArray("[data-stagger]", scope).forEach((group) => {
+      gsap.from(group.children, {
+        y: 70,
+        rotation: 1.5,
+        autoAlpha: 0,
+        duration: 0.9,
+        ease: "power4.out",
+        stagger: 0.16,
+        scrollTrigger: { trigger: group, start: "top 85%", once: true },
+      });
+    });
+
     gsap.utils.toArray("[data-img]", scope).forEach((el) => {
       const img = el.tagName === "IMG" ? el : el.querySelector("img");
       gsap.timeline({ scrollTrigger: { trigger: el, start: "top 85%", once: true } })
