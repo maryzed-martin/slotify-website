@@ -1,0 +1,85 @@
+/* Slotify design tokens. Dark is the brand default; light follows the Figma light screens.
+   Brand constants never change between themes. Semantic tokens swap. */
+:root {
+  /* brand constants */
+  --ink: #000000;
+  --ink-900: #0e0e10;
+  --ink-800: #1a1a1d;
+  --ink-700: #2a2a2e;
+  --ink-muted: #9c9ca3;
+  --white: #ffffff;
+  --orange: #ee811d;
+  --blue: #2f3479;
+  --blue-80: #595d94;
+  --blue-60: #8285af;
+  --blue-deep: #171a42;
+
+  /* semantic (dark) */
+  --bg: var(--ink);
+  --surface: var(--ink-900);
+  --surface-2: var(--ink-800);
+  --border: var(--ink-700);
+  --fg: var(--white);
+  --muted: var(--ink-muted);
+  --accent-text: var(--orange);     /* orange used on small text */
+  --accent-display: var(--orange);  /* orange used on large text and icons */
+  --hero-bg: var(--ink);            /* light mode turns heroes Royal Blue */
+  --word-ghost: var(--ink-800);     /* MISSION / VISION background words */
+  --chip-bg: transparent;
+  --header-solid: rgba(0, 0, 0, 0.82);
+
+  /* type */
+  --display: "Bungee", "Arial Black", Impact, sans-serif;
+  --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* motion */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+  /* layout */
+  --gutter: max(20px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(20px, env(safe-area-inset-right, 0px));
+  --max: 1280px;
+  --slant: 12px;
+
+  color-scheme: dark;
+}
+
+@media (min-width: 1100px) {
+  :root {
+    --gutter: max(80px, env(safe-area-inset-left, 0px));
+    --gutter-r: max(80px, env(safe-area-inset-right, 0px));
+  }
+}
+
+/* light: explicit choice, or system light when no choice was made */
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --surface: #f3f3f6;
+  --surface-2: #ececf0;
+  --border: #d8d8de;
+  --fg: #121214;
+  --muted: #5e5e68;
+  --accent-text: #a84f00;
+  --accent-display: #d9700f;
+  --hero-bg: var(--blue);
+  --word-ghost: #ececf0;
+  --header-solid: rgba(255, 255, 255, 0.9);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #ffffff;
+    --surface: #f3f3f6;
+    --surface-2: #ececf0;
+    --border: #d8d8de;
+    --fg: #121214;
+    --muted: #5e5e68;
+    --accent-text: #a84f00;
+    --accent-display: #d9700f;
+    --hero-bg: var(--blue);
+    --word-ghost: #ececf0;
+    --header-solid: rgba(255, 255, 255, 0.9);
+    color-scheme: light;
+  }
+}

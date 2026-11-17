@@ -1,0 +1,209 @@
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 400 16px/1.55 var(--body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+::selection { background: var(--orange); color: var(--ink); }
+:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ---------- type ---------- */
+.display, h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 0.96;
+  margin: 0;
+  text-wrap: balance;
+}
+.h-hero { font-size: clamp(48px, 7vw, 104px); }
+.h1 { font-size: clamp(44px, 6.4vw, 96px); }
+.h2 { font-size: clamp(36px, 5vw, 72px); }
+.h3 { font-size: clamp(24px, 2.4vw, 32px); line-height: 1.04; }
+.h4 { font-size: clamp(18px, 1.6vw, 22px); line-height: 1.1; }
+.accent { color: var(--accent-display); }
+.lede { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.55; margin: 0; max-width: 46ch; }
+.body { margin: 0; max-width: 62ch; }
+.muted { color: var(--muted); }
+.label {
+  font: 800 12px/1 var(--body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font: 800 12px/1 var(--body);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.eyebrow::before {
+  content: "";
+  width: 0; height: 0;
+  border-left: 13px solid var(--orange);
+  border-top: 7.5px solid transparent;
+  border-bottom: 7.5px solid transparent;
+}
+.tnum { font-variant-numeric: tabular-nums; }
+
+/* ---------- layout ---------- */
+.wrap {
+  width: 100%;
+  max-width: calc(var(--max) + var(--gutter) + var(--gutter-r));
+  margin-inline: auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter-r);
+}
+.section { padding-block: clamp(72px, 9vw, 140px); position: relative; }
+.stack { display: flex; flex-direction: column; }
+.row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: end;
+}
+@media (max-width: 860px) {
+  .split { grid-template-columns: 1fr; align-items: start; }
+}
+
+/* ---------- slanted button ---------- */
+.btn {
+  --btn-bg: var(--orange);
+  --btn-fg: var(--ink);
+  --btn-line: transparent;
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 0 28px;
+  border: 0;
+  background: none;
+  color: var(--btn-fg);
+  font: 800 14px/1 var(--body);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+/* the parallelogram is a skewed layer behind the label, so borders work for the outline style */
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--btn-bg);
+  border: 1.5px solid var(--btn-line);
+  transform: skewX(-15deg);
+  transition: filter 160ms ease, background-color 160ms ease;
+}
+.btn:active { transform: scale(0.97); }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover::before { filter: brightness(1.08); }
+}
+.btn--white { --btn-bg: var(--white); --btn-fg: var(--ink); }
+.btn--blue { --btn-bg: var(--blue); --btn-fg: var(--white); }
+.btn--outline { --btn-bg: transparent; --btn-fg: currentColor; --btn-line: currentColor; }
+.btn--sm { min-height: 38px; padding: 0 18px; font-size: 12px; }
+.btn--icon { padding: 0; width: 56px; }
+.btn svg { flex: none; }
+.btn[disabled] { cursor: not-allowed; opacity: 0.5; }
+@media (max-width: 860px) {
+  .btn { min-height: 44px; padding: 0 20px; font-size: 13px; }
+}
+
+/* text link with arrow */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 800 13px/1 var(--body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--accent-text);
+}
+.link-arrow svg { transition: transform 160ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .link-arrow:hover svg { transform: translateX(3px); }
+}
+
+/* chip / filter pill */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 14px;
+  border: 1.5px solid currentColor;
+  background: transparent;
+  font: 800 11px/1 var(--body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms var(--ease-out);
+}
+.chip:active { transform: scale(0.97); }
+.chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+
+/* small tags on cards */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 8px;
+  font: 800 10px/1 var(--body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--white);
+  color: var(--ink);
+}
+.tag--orange { background: var(--orange); }
+.tag--dark { background: var(--ink); color: var(--white); }
+
+/* pixel squares (always in pairs that touch at a corner) */
+.px { position: absolute; display: block; pointer-events: none; }
+.px i { position: absolute; display: block; background: var(--px, var(--orange)); }
+
+/* reveal helper: visible at rest, GSAP animates from an offset */
+[data-reveal] { will-change: transform; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+}
+
+.skip {
+  position: fixed;
+  left: 12px;
+  top: -60px;
+  z-index: 200;
+  padding: 10px 14px;
+  background: var(--orange);
+  color: var(--ink);
+  font-weight: 800;
+  text-decoration: none;
+  transition: top 160ms var(--ease-out);
+}
+.skip:focus { top: 12px; }
+
+/* light mode: white buttons get a dark outline so they still read on white pages */
+:root[data-theme="light"] .btn--white { --btn-line: #121214; }
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .btn--white { --btn-line: #121214; } }

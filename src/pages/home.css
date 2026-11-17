@@ -1,0 +1,117 @@
+/* ---------- featured ---------- */
+.feat__grid { position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: stretch; }
+.feat__panel {
+  position: relative;
+  z-index: 2;
+  margin-top: 120px;
+  margin-right: -120px;
+  padding: 56px 160px 32px 48px;
+  background: var(--blue);
+  color: var(--white);
+  clip-path: polygon(0 40px, 100% 0, 100% 100%, 0 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+}
+.feat__copy { display: flex; flex-direction: column; gap: 18px; align-items: flex-start; }
+.feat__lede { opacity: 0.9; max-width: 40ch; }
+.feat__nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.feat__dots { display: flex; gap: 6px; margin-right: auto; margin-left: 12px; }
+.feat__dots i { width: 10px; height: 4px; background: rgba(255, 255, 255, 0.35); transition: width 250ms var(--ease-out), background-color 250ms ease; }
+.feat__dots i.on { width: 28px; background: var(--orange); }
+.sq-btn {
+  display: grid; place-items: center; width: 44px; height: 44px;
+  border: 1.5px solid currentColor; background: transparent; color: inherit; cursor: pointer;
+  transition: transform 160ms var(--ease-out), background-color 160ms ease, color 160ms ease;
+}
+.sq-btn:active { transform: scale(0.95); }
+@media (hover: hover) and (pointer: fine) { .sq-btn:hover { background: var(--white); color: var(--ink); } }
+.feat__img { position: relative; z-index: 1; }
+.feat__img img { width: 100%; height: 100%; min-height: 420px; object-fit: cover; }
+.feat__tri { position: absolute; right: -18px; top: 18px; width: 24px; height: 28px; background: var(--fg); clip-path: polygon(0 0, 100% 50%, 0 100%); }
+.feat__marks { position: absolute; left: var(--gutter); bottom: -28px; display: flex; }
+.feat__marks i { width: 14px; height: 16px; background: var(--orange); clip-path: polygon(0 0, 100% 50%, 0 100%); }
+
+/* ---------- intro ---------- */
+.intro__grid { align-items: center; }
+.intro__copy { gap: 24px; align-items: flex-start; }
+.intro__kicker, .offer__kicker { margin: 0; font-weight: 800; color: var(--accent-text); font-size: 18px; }
+.intro__art { position: relative; justify-self: end; width: min(100%, 520px); }
+.intro__frame { aspect-ratio: 1; overflow: hidden; background: radial-gradient(circle at 50% 55%, #2bd17e 0%, #0d6b3c 55%, #062f1b 100%); border: 6px solid #c8962e; }
+.intro__frame img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+
+/* ---------- orange band with our games ---------- */
+.band-orange {
+  position: relative;
+  padding-block: clamp(120px, 12vw, 180px);
+  background: var(--orange);
+  color: var(--ink);
+  clip-path: polygon(0 clamp(40px, 6vw, 100px), 100% 0, 100% calc(100% - clamp(40px, 6vw, 100px)), 0 100%);
+}
+.band-orange__head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px; margin-bottom: 44px; }
+.chips { justify-content: center; gap: 8px; }
+.band-orange .chip[aria-pressed="true"] { background: var(--ink); color: var(--orange); border-color: var(--ink); }
+.band-orange .carousel__bar { margin-inline: auto; }
+
+/* ---------- statement ---------- */
+.statement .split { align-items: center; }
+.statement__word { display: inline; }
+
+/* ---------- offer ---------- */
+.offer__top { align-items: center; margin-bottom: clamp(80px, 9vw, 140px); }
+.offer__art { position: relative; aspect-ratio: 5 / 4.4; }
+.offer__block { position: absolute; inset: 14% 0 0 0; background: var(--blue); clip-path: polygon(0 14%, 100% 0, 100% 100%, 0 100%); }
+.offer__art img { position: absolute; left: 6%; bottom: 0; width: 78%; }
+.offer__copy { gap: 22px; }
+
+.offer-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.offer-card {
+  --c-bg: var(--blue); --c-fg: var(--white); --c-n: var(--white);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+  padding-top: 70px;
+  text-decoration: none;
+  color: var(--c-fg);
+  isolation: isolate;
+  transition: transform 300ms var(--ease-out);
+}
+.offer-card::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--c-bg); clip-path: polygon(0 70px, 100% 0, 100% 100%, 0 100%); }
+.offer-card--orange { --c-bg: var(--orange); --c-fg: var(--ink); --c-n: var(--white); }
+.offer-card--white { --c-bg: var(--white); --c-fg: var(--ink); --c-n: var(--orange); }
+/* the number crosses the slanted cut */
+.offer-card__n { position: absolute; left: 28px; top: 28px; font: 400 clamp(56px, 6vw, 88px)/1 var(--display); color: var(--c-n); }
+.offer-card__body { display: flex; flex-direction: column; gap: 12px; margin-top: auto; padding: 0 28px 32px; }
+.offer-card__d { font-size: 15px; line-height: 1.5; }
+.offer-card__go { display: inline-grid; place-items: center; width: 40px; height: 40px; border: 1.5px solid currentColor; margin-top: 8px; transition: transform 200ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .offer-card:hover { transform: translateY(-6px); }
+  .offer-card:hover .offer-card__go { transform: translateX(4px); }
+}
+:root[data-theme="light"] .offer-card--white { --c-bg: var(--surface); --c-n: var(--accent-display); }
+:root[data-theme="light"] .offer-card__n { top: 84px; }
+:root[data-theme="light"] .offer-card { padding-top: 160px; }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .offer-card--white { --c-bg: var(--surface); --c-n: var(--accent-display); }
+  :root:not([data-theme="dark"]) .offer-card__n { top: 84px; }
+  :root:not([data-theme="dark"]) .offer-card { padding-top: 160px; }
+}
+
+/* ---------- CTA ---------- */
+.cta__title { font: 400 clamp(40px, 7vw, 104px)/0.95 var(--display); text-transform: uppercase; margin: 0 0 40px; text-wrap: balance; }
+.cta__row { display: grid; grid-template-columns: minmax(0, 1.2fr) auto auto; gap: 32px; align-items: center; padding-top: 32px; border-top: 1px solid var(--border); }
+.cta__mail { color: var(--accent-text); font-weight: 800; text-decoration: none; }
+
+@media (max-width: 860px) {
+  .feat__grid { grid-template-columns: 1fr; }
+  .feat__img { order: -1; }
+  .feat__img img { min-height: 220px; aspect-ratio: 16 / 10; }
+  .feat__panel { margin: -40px 0 0; padding: 56px 20px 24px; }
+  .feat__tri { display: none; }
+  .intro__art { justify-self: stretch; width: 100%; }
+  .offer-cards { grid-template-columns: 1fr; }
+  .offer-card { min-height: 300px; }
+  .cta__row { grid-template-columns: 1fr; gap: 16px; justify-items: start; }
+}

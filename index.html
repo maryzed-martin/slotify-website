@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Slotify · Endless worlds. One spin away.</title>
+    <meta name="description" content="Slotify is a slot studio with its own engine: original slot games, the Forge engine and custom titles for your brand." />
+    <script>
+      // Apply the saved theme before first paint so there is no flash.
+      try { var t = localStorage.getItem("slotify-theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

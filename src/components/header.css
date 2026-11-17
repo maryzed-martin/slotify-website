@@ -1,0 +1,56 @@
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  padding-top: env(safe-area-inset-top, 0px);
+  color: var(--fg);
+  transition: background-color 240ms ease, color 240ms ease, box-shadow 240ms ease;
+}
+.site-header.on-hero { color: var(--white); }
+.site-header.is-solid {
+  background: var(--header-solid);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 var(--border);
+}
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 104px;
+  max-width: calc(var(--max) + var(--gutter) + var(--gutter-r));
+  margin-inline: auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter-r);
+  transition: height 240ms var(--ease-out);
+}
+.is-solid .site-header__inner { height: 76px; }
+.site-header__logo { color: inherit; display: block; }
+.site-header__actions { display: flex; align-items: center; gap: 12px; }
+.theme-btn {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out), opacity 160ms ease;
+  opacity: 0.85;
+}
+.theme-btn:active { transform: scale(0.94); }
+@media (hover: hover) and (pointer: fine) { .theme-btn:hover { opacity: 1; } }
+.menu-btn { --btn-fg: var(--ink); }
+.signin { color: inherit; }
+
+@media (max-width: 860px) {
+  .site-header__inner { height: 72px; }
+  .is-solid .site-header__inner { height: 64px; }
+  .site-header__logo svg { height: 28px; }
+  .site-header__actions { gap: 8px; }
+  .hide-sm { display: none !important; }
+  .menu-btn { width: 56px; padding: 0; }
+  .signin { padding: 0 16px; }
+}

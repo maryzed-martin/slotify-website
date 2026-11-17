@@ -1,0 +1,46 @@
+.carousel { position: relative; }
+.carousel__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(270px, calc((100% - 64px) / 4.4));
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  padding-inline: var(--gutter) var(--gutter-r);
+  padding-bottom: 4px;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.carousel__track::-webkit-scrollbar { display: none; }
+.carousel__track > * { scroll-snap-align: start; }
+.carousel__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 28px;
+  padding-inline: var(--gutter) var(--gutter-r);
+  max-width: calc(var(--max) + var(--gutter) + var(--gutter-r));
+}
+.carousel__arrows { display: flex; gap: 10px; }
+.carousel__arrows button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid currentColor;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out), background-color 160ms ease, color 160ms ease;
+}
+.carousel__arrows button:active { transform: scale(0.95); }
+@media (hover: hover) and (pointer: fine) {
+  .carousel__arrows button:hover { background: currentColor; }
+  .carousel__arrows button:hover svg { color: var(--orange); }
+  .carousel--light .carousel__arrows button:hover svg { color: var(--ink); }
+}
+@media (max-width: 860px) {
+  .carousel__track { grid-auto-columns: 72%; }
+}
