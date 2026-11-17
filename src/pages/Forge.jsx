@@ -265,8 +265,8 @@ export default function Forge() {
             <h2 className="h2" id="cmp-title" data-reveal>Months of code,<br />or days in Forge.</h2>
           </div>
           <div className="cmp__proof" data-reveal>
-            <div><b>8+</b><span>Certified maths models, ready to use</span></div>
-            <div><b>15</b><span>Slotify titles built in Forge</span></div>
+            <div><b data-count>8+</b><span>Certified maths models, ready to use</span></div>
+            <div><b data-count>15</b><span>Slotify titles built in Forge</span></div>
           </div>
         </div>
         <div className="cmp__table" role="table" aria-label="Building from scratch compared with Forge">

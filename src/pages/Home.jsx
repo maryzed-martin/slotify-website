@@ -9,7 +9,22 @@ import Pixels from "../components/Pixels.jsx";
 import { Arrow, ArrowLeft, Play, Doc } from "../components/Icons.jsx";
 import { GAMES, FILTERS, filterGames, bySlug, wideSrc } from "../data/games.js";
 import { CONTACT_EMAIL } from "../config.js";
+import { useTilt } from "../hooks/useTilt.js";
 import "./home.css";
+
+function OfferCard({ o }) {
+  const tilt = useTilt(4);
+  return (
+    <Link ref={tilt} to={o.to} className={`offer-card offer-card--${o.tone}`}>
+      <span className="offer-card__n" aria-hidden="true">{o.n}</span>
+      <span className="offer-card__body">
+        <span className="h4">{o.t}</span>
+        <span className="offer-card__d">{o.d}</span>
+        <span className="offer-card__go"><Arrow /></span>
+      </span>
+    </Link>
+  );
+}
 
 const FEATURED = ["venus-rising", "lex-power-up", "big-money-bonanza"].map(bySlug);
 const OFFER = [
@@ -82,7 +97,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="feat__img" data-reveal>
+          <div className="feat__img" data-img>
             <img src={wideSrc(f)} alt={`${f.name} game screen`} />
             <span className="feat__tri" aria-hidden="true" />
           </div>
@@ -100,7 +115,7 @@ export default function Home() {
             <div data-reveal><Link className="btn" to="/about">About us</Link></div>
           </div>
           <div className="intro__art">
-            <div className="intro__frame" data-depth="0.4"><img src="img/chars/char_bonanza.webp" alt="Character from Big Money Bonanza" loading="lazy" /></div>
+            <div className="intro__frame" data-img><img src="img/chars/char_bonanza.webp" alt="Character from Big Money Bonanza" loading="lazy" /></div>
             <Pixels x="-24px" bottom="-24px" size={32} />
           </div>
         </div>
@@ -150,16 +165,7 @@ export default function Home() {
           </div>
         </div>
         <div className="wrap offer-cards">
-          {OFFER.map((o) => (
-            <Link key={o.n} to={o.to} className={`offer-card offer-card--${o.tone}`}>
-              <span className="offer-card__n" aria-hidden="true">{o.n}</span>
-              <span className="offer-card__body">
-                <span className="h4">{o.t}</span>
-                <span className="offer-card__d">{o.d}</span>
-                <span className="offer-card__go"><Arrow /></span>
-              </span>
-            </Link>
-          ))}
+          {OFFER.map((o) => <OfferCard key={o.n} o={o} />)}
         </div>
       </section>
 

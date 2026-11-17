@@ -65,7 +65,10 @@
 .offer__art img { position: absolute; left: 6%; bottom: 0; width: 78%; }
 .offer__copy { gap: 22px; }
 
-.offer-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.offer-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: start; --step: 64px; padding-bottom: calc(var(--step) * 2); }
+/* stairs: every card sits one equal step lower than the one before */
+.offer-card:nth-child(2) { margin-top: var(--step); }
+.offer-card:nth-child(3) { margin-top: calc(var(--step) * 2); }
 .offer-card {
   --c-bg: var(--blue); --c-fg: var(--white); --c-n: var(--white);
   position: relative;
@@ -87,7 +90,6 @@
 .offer-card__d { font-size: 15px; line-height: 1.5; }
 .offer-card__go { display: inline-grid; place-items: center; width: 40px; height: 40px; border: 1.5px solid currentColor; margin-top: 8px; transition: transform 200ms var(--ease-out); }
 @media (hover: hover) and (pointer: fine) {
-  .offer-card:hover { transform: translateY(-6px); }
   .offer-card:hover .offer-card__go { transform: translateX(4px); }
 }
 :root[data-theme="light"] .offer-card--white { --c-bg: var(--surface); --c-n: var(--accent-display); }
@@ -111,7 +113,8 @@
   .feat__panel { margin: -40px 0 0; padding: 56px 20px 24px; }
   .feat__tri { display: none; }
   .intro__art { justify-self: stretch; width: 100%; }
-  .offer-cards { grid-template-columns: 1fr; }
+  .offer-cards { grid-template-columns: 1fr; padding-bottom: 0; }
+  .offer-card:nth-child(n) { margin-top: 0; }
   .offer-card { min-height: 300px; }
   .cta__row { grid-template-columns: 1fr; gap: 16px; justify-items: start; }
 }

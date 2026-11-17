@@ -9,9 +9,16 @@ import "./header.css";
 // once the page scrolls it gets a solid, theme-coloured backdrop.
 export default function Header({ tone = "hero", onMenu, theme, onTheme }) {
   const [solid, setSolid] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    const on = () => setSolid(window.scrollY > 40);
+    let last = window.scrollY;
+    const on = () => {
+      const y = window.scrollY;
+      setSolid(y > 40);
+      // hide while reading down the page, show again as soon as the visitor scrolls up
+      if (Math.abs(y - last) > 6) { setHidden(y > last && y > 400); last = y; }
+    };
     on();
     window.addEventListener("scroll", on, { passive: true });
     return () => window.removeEventListener("scroll", on);
@@ -20,7 +27,7 @@ export default function Header({ tone = "hero", onMenu, theme, onTheme }) {
   const onHero = tone === "hero" && !solid;
 
   return (
-    <header className={`site-header ${solid ? "is-solid" : ""} ${onHero ? "on-hero" : "on-page"}`}>
+    <header className={`site-header ${solid ? "is-solid" : ""} ${hidden ? "is-hidden" : ""} ${onHero ? "on-hero" : "on-page"}`}>
       <div className="site-header__inner">
         <Link to="/" className="site-header__logo" aria-label="Slotify home">
           <Logo height={34} />

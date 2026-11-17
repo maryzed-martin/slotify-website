@@ -67,13 +67,23 @@ export default function About() {
         gsap.fromTo(el, { y: 60 * d }, { y: -60 * d, ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true } });
       });
 
-      // what drives us: cards are CSS-sticky; the one underneath scales to 0.95 and dims as the next slides over
+      // what drives us: cards are CSS-sticky. A card only shrinks (to 0.95) and dims once the next card
+      // actually starts covering it, and it is finished exactly when the next card has pinned on top.
       const cards = gsap.utils.toArray(".drive");
+      const stickTop = (el) => parseFloat(getComputedStyle(el).top) || 0;
       cards.forEach((card, i) => {
         const next = cards[i + 1];
-        if (next) {
-          gsap.to(card, { scale: 0.95, filter: "brightness(0.7)", ease: "none", scrollTrigger: { trigger: next, start: "top 85%", end: "top 30%", scrub: true } });
-        }
+        if (!next) return;
+        gsap.fromTo(card, { scale: 1, "--dim": 0 }, {
+          scale: 0.95, "--dim": 0.3, ease: "none",
+          scrollTrigger: {
+            trigger: next,
+            start: () => `top ${stickTop(card) + card.offsetHeight}px`,
+            end: () => `top ${stickTop(next)}px`,
+            scrub: 0.4,
+            invalidateOnRefresh: true,
+          },
+        });
       });
       ScrollTrigger.create({
         trigger: ".drives__cards", start: "top 60%", end: "bottom 60%",
@@ -175,7 +185,7 @@ export default function About() {
         <div className="products">
           {PRODUCTS.map((p) => (
             <article key={p.t} className={`product product--${p.tone}`} data-reveal>
-              <div className="product__img"><img src={p.img} alt="" loading="lazy" /></div>
+              <div className="product__img" data-img><img src={p.img} alt="" loading="lazy" /></div>
               <div className="product__body">
                 <h3 className="h3">{p.t}</h3>
                 <p className="label product__k">{p.k}</p>

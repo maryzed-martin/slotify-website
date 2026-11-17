@@ -156,7 +156,7 @@
   cursor: pointer;
   transition: background-color 160ms ease, color 160ms ease, transform 160ms var(--ease-out);
 }
-:root[data-theme="light"] .booking__days button, :root[data-theme="light"] .booking__times button { background: #fff; }
+:root[data-theme="light"] .booking__days button:not(.on), :root[data-theme="light"] .booking__times button { background: #fff; }
 .booking__days button:active, .booking__times button:active { transform: scale(0.97); }
 .booking__days button.on { background: var(--blue); color: var(--white); border-color: var(--blue); }
 .booking__times button.on { border: 2px solid var(--blue); }

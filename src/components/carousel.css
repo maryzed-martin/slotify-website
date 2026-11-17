@@ -6,8 +6,10 @@
   gap: 16px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  scroll-padding-inline: var(--gutter);
-  padding-inline: var(--gutter) var(--gutter-r);
+  /* first card lines up with the page container; the row still bleeds off the right edge */
+  --start: var(--edge-l);
+  scroll-padding-inline: var(--start);
+  padding-inline: var(--start) var(--gutter-r);
   padding-bottom: 4px;
   scrollbar-width: none;
   overscroll-behavior-x: contain;
@@ -22,6 +24,7 @@
   margin-top: 28px;
   padding-inline: var(--gutter) var(--gutter-r);
   max-width: calc(var(--max) + var(--gutter) + var(--gutter-r));
+  margin-inline: auto;
 }
 .carousel__arrows { display: flex; gap: 10px; }
 .carousel__arrows button {

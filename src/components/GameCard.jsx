@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import { cardSrc } from "../data/games.js";
 import { Play, Doc } from "./Icons.jsx";
+import { useTilt } from "../hooks/useTilt.js";
 import "./gamecard.css";
 
 // Game card: art on top, slanted dark body below with RTP, volatility and two actions.
 export default function GameCard({ game, compact = false }) {
+  const tilt = useTilt(5);
   return (
-    <article className={`gcard ${compact ? "gcard--compact" : ""}`}>
+    <article ref={tilt} className={`gcard ${compact ? "gcard--compact" : ""}`}>
       <Link to={`/games/${game.slug}`} className="gcard__art" aria-label={`${game.name} demo`}>
         <img src={cardSrc(game)} alt="" loading="lazy" width="560" height="700" />
         <span className="gcard__tags">

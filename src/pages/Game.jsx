@@ -100,7 +100,7 @@ export default function Game() {
       <section className="wrap screens" aria-label="Built for every screen">
         <h2 className="h2" data-reveal>Built for every screen</h2>
         <div className="screens__row">
-          <img className="screens__wide" src={bg} alt={`${game.name} on desktop`} loading="lazy" />
+          <img className="screens__wide" data-img src={bg} alt={`${game.name} on desktop`} loading="lazy" />
           <img className="screens__phone" src={cardSrc(game)} alt={`${game.name} on mobile`} loading="lazy" />
         </div>
       </section>

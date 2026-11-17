@@ -41,6 +41,9 @@
   --gutter-r: max(20px, env(safe-area-inset-right, 0px));
   --max: 1280px;
   --slant: 12px;
+  /* left edge of the centred content column (same as .wrap), for full-bleed rows that must line up with it.
+     --vw is the viewport width without the scrollbar, set in main.jsx */
+  --edge-l: max(var(--gutter), calc((var(--vw, 100vw) - var(--max)) / 2));
 
   color-scheme: dark;
 }

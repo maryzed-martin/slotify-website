@@ -32,7 +32,7 @@ button { font: inherit; color: inherit; }
 .h1 { font-size: clamp(44px, 6.4vw, 96px); }
 .h2 { font-size: clamp(36px, 5vw, 72px); }
 .h3 { font-size: clamp(24px, 2.4vw, 32px); line-height: 1.04; }
-.h4 { font-size: clamp(18px, 1.6vw, 22px); line-height: 1.1; }
+.h4 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(18px, 1.6vw, 22px); line-height: 1.1; }
 .accent { color: var(--accent-display); }
 .lede { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.55; margin: 0; max-width: 46ch; }
 .body { margin: 0; max-width: 62ch; }
@@ -207,3 +207,19 @@ button { font: inherit; color: inherit; }
 /* light mode: white buttons get a dark outline so they still read on white pages */
 :root[data-theme="light"] .btn--white { --btn-line: #121214; }
 @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .btn--white { --btn-line: #121214; } }
+
+/* underline that draws in from the left on hover (footer, menu sub links, inline links) */
+.u-link, .footer__cols a, .menu__sub a, .crumbs a {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0% 1px no-repeat;
+  transition: background-size 260ms var(--ease-out), color 160ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .u-link:hover, .footer__cols a:hover, .menu__sub a:hover, .crumbs a:hover { background-size: 100% 1px; }
+}
+
+/* buttons: label nudges with the press, icon slides a touch on hover */
+@media (hover: hover) and (pointer: fine) {
+  .btn svg { transition: transform 200ms var(--ease-out); }
+  .btn:hover svg { transform: translateX(2px); }
+  .chip:hover:not([aria-pressed="true"]) { background: color-mix(in srgb, currentColor 12%, transparent); }
+}

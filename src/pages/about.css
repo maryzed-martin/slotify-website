@@ -62,8 +62,10 @@
   flex-direction: column;
   gap: 16px;
   transform-origin: 50% 0;
-  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.4);
+  --dim: 0;
 }
+/* dimming layer for the card that is being covered (animated by GSAP) */
+.drive::after { content: ""; position: absolute; inset: 0; background: #000; opacity: var(--dim); pointer-events: none; }
 .drive--orange { --d-bg: var(--orange); --d-fg: var(--ink); --d-n: var(--ink); }
 .drive--dark { --d-bg: var(--ink-800); --d-fg: var(--white); }
 :root[data-theme="light"] .drive--dark { --d-bg: var(--surface-2); --d-fg: var(--fg); --d-n: var(--accent-display); }

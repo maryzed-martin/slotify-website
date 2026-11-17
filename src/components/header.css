@@ -4,8 +4,10 @@
   z-index: 50;
   padding-top: env(safe-area-inset-top, 0px);
   color: var(--fg);
-  transition: background-color 240ms ease, color 240ms ease, box-shadow 240ms ease;
+  transition: background-color 240ms ease, color 240ms ease, box-shadow 240ms ease, transform 320ms var(--ease-out);
 }
+.site-header.is-hidden { transform: translateY(-100%); }
+.site-header:focus-within { transform: none; }
 .site-header.on-hero { color: var(--white); }
 .site-header.is-solid {
   background: var(--header-solid);

@@ -11,6 +11,11 @@ import "./styles/tokens.css";
 import "./styles/global.css";
 import App from "./App.jsx";
 
+// Viewport width without the scrollbar, so full-bleed rows line up exactly with the header and .wrap.
+const setVw = () => document.documentElement.style.setProperty("--vw", `${document.documentElement.clientWidth}px`);
+setVw();
+window.addEventListener("resize", setVw);
+
 // HashRouter keeps routes working on any static host and from a local file.
 // Switch to BrowserRouter when the site has a server that rewrites to index.html.
 ReactDOM.createRoot(document.getElementById("root")).render(
