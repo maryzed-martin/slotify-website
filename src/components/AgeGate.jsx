@@ -49,7 +49,7 @@ export default function AgeGate() {
           <button ref={okBtn} className="btn" type="button" onClick={accept}>I am 18 or older</button>
           <button className="btn btn--outline" type="button" onClick={() => setUnder(true)}>I am under 18</button>
         </div>
-        <p className="gate__fine">Play responsibly. By entering you accept our <a href="#" onClick={(e) => e.preventDefault()}>Terms of use</a> and <a href="#" onClick={(e) => e.preventDefault()}>Privacy policy</a>.</p>
+        <p className="gate__fine">Play responsibly. By entering you accept our <a href="#/terms" target="_blank" rel="noreferrer">Terms of use</a> and <a href="#/privacy" target="_blank" rel="noreferrer">Privacy policy</a>.</p>
       </div>
     </div>
   );

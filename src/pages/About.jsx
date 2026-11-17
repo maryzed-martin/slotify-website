@@ -242,7 +242,7 @@ export default function About() {
               </fieldset>
               <label className="field"><span>Message</span><textarea id="c-msg" name="message" rows="4" placeholder="Tell us about your project" /></label>
               <div className="form__foot">
-                <p>By sending this form you agree to our <a href="#" onClick={(e) => e.preventDefault()}>Privacy policy</a>.</p>
+                <p>By sending this form you agree to our <Link to="/privacy">Privacy policy</Link>.</p>
                 <button className="btn" type="submit">Send message</button>
               </div>
             </form>

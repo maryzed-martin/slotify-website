@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { CONTACT_EMAIL } from "../config.js";
+import { CONTACT_EMAIL, SOCIAL } from "../config.js";
 import "./footer.css";
 
 const COLS = [
@@ -17,11 +17,11 @@ export default function Footer() {
       <div className="footer__notch" aria-hidden="true"><span /></div>
       <div className="wrap footer__main">
         <div className="footer__brand">
-          <img src="img/logo_stack_white.png" alt="Slotify" width="96" height="75" />
+          <Link to="/" className="footer__logo" aria-label="Slotify home"><img src="img/logo_stack_white.png" alt="Slotify" width="96" height="75" /></Link>
           <p className="label footer__tag">Endless worlds. One spin away.</p>
           <ul className="footer__social" aria-label="Social">
-            {[["IN", "LinkedIn"], ["X", "X"], ["IG", "Instagram"], ["YT", "YouTube"]].map(([s, n]) => (
-              <li key={s}><a href="#" aria-label={n} onClick={(e) => e.preventDefault()}>{s}</a></li>
+            {SOCIAL.map(([s, n, url]) => (
+              <li key={s}><a href={url} target="_blank" rel="noreferrer" aria-label={`Slotify on ${n}`}>{s}</a></li>
             ))}
           </ul>
         </div>
@@ -42,8 +42,8 @@ export default function Footer() {
         <span className="footer__age" aria-label="18 plus">18+</span>
         <p>This website is intended for B2B partners only. Games shown are for demonstration and no real money gambling is offered. Play responsibly.</p>
         <ul>
-          <li><a href="#" onClick={(e) => e.preventDefault()}>Privacy policy</a></li>
-          <li><a href="#" onClick={(e) => e.preventDefault()}>Terms of use</a></li>
+          <li><Link to="/privacy">Privacy policy</Link></li>
+          <li><Link to="/terms">Terms of use</Link></li>
           <li>© 2026 Slotify</li>
         </ul>
       </div>

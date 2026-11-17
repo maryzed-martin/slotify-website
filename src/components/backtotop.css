@@ -1,0 +1,40 @@
+.to-top {
+  position: fixed;
+  z-index: 60;
+  right: calc(max(20px, env(safe-area-inset-right, 0px)) + 4px);
+  /* sits above the legal row of the footer so it never covers "© 2026 Slotify" */
+  bottom: calc(112px + env(safe-area-inset-bottom, 0px));
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  cursor: pointer;
+  isolation: isolate;
+  opacity: 0;
+  transform: translateY(16px) scale(0.92);
+  pointer-events: none;
+  transition: opacity 260ms var(--ease-out), transform 260ms var(--ease-out);
+}
+.to-top.is-on { opacity: 1; transform: none; pointer-events: auto; }
+/* slanted orange tile, same shape language as the buttons */
+.to-top::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--orange); transform: skewX(-12deg); }
+/* pulse: a ring leaves the tile every 2 s and the arrow lifts with it */
+.to-top::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  border: 2px solid var(--orange);
+  transform: skewX(-12deg);
+  animation: to-top-ring 2s var(--ease-out) infinite;
+}
+.to-top svg { animation: to-top-lift 2s var(--ease-in-out) infinite; }
+.to-top:active { transform: scale(0.95); }
+@media (hover: hover) and (pointer: fine) { .to-top:hover::before { filter: brightness(1.08); } }
+@keyframes to-top-ring { 0% { opacity: 0.8; transform: skewX(-12deg) scale(1); } 70%, 100% { opacity: 0; transform: skewX(-12deg) scale(1.55); } }
+@keyframes to-top-lift { 0%, 100% { transform: translateY(3px); } 50% { transform: translateY(-4px); } }
+@media (prefers-reduced-motion: reduce) { .to-top::after, .to-top svg { animation: none; } }
+@media (max-width: 860px) { .to-top { width: 48px; height: 48px; } }
