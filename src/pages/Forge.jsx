@@ -90,7 +90,6 @@ export default function Forge() {
   const [time, setTime] = useState(1);
 
   useGSAP(() => {
-    reveal(root.current);
     const mm = gsap.matchMedia();
     mm.add({ motion: "(prefers-reduced-motion: no-preference)", reduce: "(prefers-reduced-motion: reduce)" }, (ctx) => {
       const { motion } = ctx.conditions;
@@ -166,6 +165,10 @@ export default function Forge() {
       gsap.from(".cmp__forge", { yPercent: 18, autoAlpha: 0, duration: 1, scrollTrigger: { trigger: ".cmp", start: "top 70%" } });
       gsap.from(".cmp__row", { x: -20, autoAlpha: 0, stagger: 0.06, duration: 0.6, scrollTrigger: { trigger: ".cmp", start: "top 70%" } });
     });
+    // Created after the pinned scene on purpose: the pin adds 4 screens of scroll above these sections,
+    // and ScrollTrigger measures in creation order. Created earlier, they would fire long before they are in view.
+    reveal(root.current);
+    ScrollTrigger.sort();
   }, { scope: root });
 
   const jump = (i) => {

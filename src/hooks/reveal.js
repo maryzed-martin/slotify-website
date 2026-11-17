@@ -58,7 +58,7 @@ export function reveal(scope) {
       [...group.children].forEach((card, i) => {
         gsap.fromTo(card, { y: 120 + i * 90, rotation: 2 + i, autoAlpha: 0.15 }, {
           y: 0, rotation: 0, autoAlpha: 1, ease: "power2.out",
-          scrollTrigger: { trigger: group, start: "top bottom", end: "top 45%", scrub: 0.6 },
+          scrollTrigger: { trigger: group, start: "top bottom", end: "top 30%", scrub: 0.8 },
         });
       });
     });
@@ -67,7 +67,7 @@ export function reveal(scope) {
       const dir = el.dataset.scrubIn === "left" ? -1 : 1;
       gsap.fromTo(el, { x: dir * 140, rotation: dir * 2, autoAlpha: 0.2 }, {
         x: 0, rotation: 0, autoAlpha: 1, ease: "power2.out",
-        scrollTrigger: { trigger: el, start: "top bottom", end: "top 55%", scrub: 0.6 },
+        scrollTrigger: { trigger: el, start: "top bottom", end: "top 40%", scrub: 0.8 },
       });
     });
 
