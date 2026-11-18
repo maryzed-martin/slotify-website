@@ -74,8 +74,8 @@
 .step.on .step-icon__line { fill: var(--accent-display); }
 .step__t { font: 400 clamp(17px, 1.6vw, 22px)/1.1 var(--display); text-transform: uppercase; align-self: center; transition: color 200ms ease; }
 .step.on .step__t { color: var(--fg); }
-.step__d { grid-column: 2; color: var(--fg); font-size: 15px; display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 350ms var(--ease-out), opacity 250ms ease, margin 250ms ease; overflow: hidden; }
-.step.on .step__d { grid-template-rows: 1fr; opacity: 1; margin-top: 6px; }
+.step__d { grid-column: 2; color: var(--fg); font-size: 15px; max-height: 0; opacity: 0; overflow: hidden; transition: max-height 350ms var(--ease-out), opacity 250ms ease, margin 250ms ease; }
+.step.on .step__d { max-height: 6em; opacity: 1; margin-top: 6px; }
 .scene__bar { height: 4px; background: var(--border); position: relative; }
 .scene__bar i { position: absolute; inset: 0 auto 0 0; background: var(--orange); transition: width 300ms var(--ease-out); }
 
@@ -97,7 +97,7 @@
 .scene__chrome b { font-size: clamp(22px, 3vw, 40px); }
 .scene__chrome small { color: rgba(255, 255, 255, 0.7); font-size: clamp(14px, 1.6vw, 22px); }
 .scene__chrome .btn { font-size: clamp(14px, 1.6vw, 22px); min-height: 2.6em; padding: 0 1.4em; }
-.scene__lobby { position: absolute; z-index: 2; right: 3%; top: 19%; width: 46%; display: grid; grid-template-columns: 1fr 1fr; gap: 6%; }
+.scene__lobby { position: absolute; z-index: 2; right: 3%; top: 19%; width: 36%; display: grid; grid-template-columns: 1fr 1fr; gap: 6%; }
 .scene__lobby img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
 .scene__lobby b { display: block; margin-top: 8px; font-size: clamp(11px, 1.1vw, 15px); }
 .scene__lobby small { display: block; color: rgba(255, 255, 255, 0.7); font-size: 12px; }

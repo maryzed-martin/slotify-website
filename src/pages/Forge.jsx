@@ -154,8 +154,8 @@ export default function Forge() {
         .to(".scene__meter", { autoAlpha: 1, duration: 0.2 }, 2.3)
         .to(meter, { v: 5000, duration: 0.5, onUpdate: () => { const el = root.current?.querySelector(".scene__win"); if (el) el.textContent = Math.round(meter.v).toLocaleString("en-US"); } }, 2.35)
         .addLabel("release", 3)
-        .to(".scene__meter", { autoAlpha: 0, duration: 0.15 }, 3)
-        .to(".scene__machine", { scale: 0.5, xPercent: -14, duration: 0.5, ease: "power2.inOut" }, 3.05)
+        .to(".scene__meter, .scene__badge", { autoAlpha: 0, duration: 0.15 }, 3)
+        .to(".scene__machine", { scale: 0.5, duration: 0.5, ease: "power2.inOut" }, 3.05) // stays inside the blue block so "Your game" is readable in light mode too
         .to(".scene__chrome", { autoAlpha: 1, duration: 0.3 }, 3.3)
         .to(".scene__lobby > *", { autoAlpha: 1, x: 0, duration: 0.35, stagger: 0.12, ease: "power2.out" }, 3.35)
         .to(".scene__tri", { xPercent: -45, duration: 0.6 }, 3.05)
