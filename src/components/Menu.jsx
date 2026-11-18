@@ -32,7 +32,9 @@ export default function Menu({ open, onClose, theme, onTheme }) {
       .set(root.current, { autoAlpha: 1 })
       .fromTo(root.current, { clipPath: "inset(0 0 100% 0)" }, { clipPath: "inset(0 0 0% 0)", duration: 0.5, ease: "power4.inOut" })
       .from(".menu__item", { y: 24, autoAlpha: 0, duration: 0.45, stagger: 0.035 }, "-=0.18")
-      .from(".menu__feature > *", { x: 32, autoAlpha: 0, duration: 0.5, stagger: 0.06 }, "<0.05")
+      // explicit end values: the button has a CSS transform transition, so a plain .from() could read
+      // a half-finished transform as its resting place and leave the button 32px off centre
+      .fromTo(".menu__feature > *", { x: 32, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.5, stagger: 0.06 }, "<0.05")
       .from(".menu__char", { y: 60, autoAlpha: 0, duration: 0.7 }, "<");
   }, { scope: root });
 
