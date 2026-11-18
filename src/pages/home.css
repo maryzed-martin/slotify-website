@@ -1,5 +1,6 @@
 /* ---------- featured ---------- */
-.feat__grid { position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: stretch; }
+/* pan-y: the browser keeps vertical scrolling, horizontal moves come to us as swipes */
+.feat__grid { touch-action: pan-y; position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: stretch; }
 .feat__panel {
   position: relative;
   z-index: 2;

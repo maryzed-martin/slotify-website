@@ -71,13 +71,30 @@ export default function Home() {
   });
   const f = FEATURED[slide];
 
+  // swipe left/right on the featured game (touch and pen), same as the arrows.
+  // A quick flick counts even if it is short; vertical scrolling is left alone.
+  const swipe = useRef(null);
+  const onDown = (e) => {
+    if (e.pointerType === "mouse") return;
+    swipe.current = { x: e.clientX, y: e.clientY, t: performance.now() };
+  };
+  const onUp = (e) => {
+    const s = swipe.current;
+    swipe.current = null;
+    if (!s) return;
+    const dx = e.clientX - s.x;
+    const dy = e.clientY - s.y;
+    const v = Math.abs(dx) / (performance.now() - s.t);
+    if (Math.abs(dx) > Math.abs(dy) * 1.2 && (Math.abs(dx) > 50 || v > 0.4)) goSlide(dx < 0 ? 1 : -1);
+  };
+
   return (
     <div ref={root}>
       <ReelsHero />
 
       {/* Featured games */}
       <section className="section feat" aria-label="Featured games">
-        <div className="wrap feat__grid">
+        <div className="wrap feat__grid" onPointerDown={onDown} onPointerUp={onUp} onPointerCancel={() => (swipe.current = null)}>
           <div className="feat__panel" data-reveal>
             <div className="feat__copy">
               <span className="tag tag--orange">Featured game</span>
