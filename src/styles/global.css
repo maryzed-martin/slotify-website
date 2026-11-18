@@ -208,13 +208,13 @@ button { font: inherit; color: inherit; }
 :root[data-theme="light"] .btn--white { --btn-line: #121214; }
 @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .btn--white { --btn-line: #121214; } }
 
-/* underline that draws in from the left on hover (footer, menu sub links, inline links) */
-.u-link, .footer__cols a, .menu__sub a, .crumbs a {
+/* underline that draws in from the left on hover (footer, breadcrumbs, inline links) */
+.u-link, .footer__cols a, .crumbs a {
   background: linear-gradient(currentColor, currentColor) 0 100% / 0% 1px no-repeat;
   transition: background-size 260ms var(--ease-out), color 160ms ease;
 }
 @media (hover: hover) and (pointer: fine) {
-  .u-link:hover, .footer__cols a:hover, .menu__sub a:hover, .crumbs a:hover { background-size: 100% 1px; }
+  .u-link:hover, .footer__cols a:hover, .crumbs a:hover { background-size: 100% 1px; }
 }
 
 /* buttons: label nudges with the press, icon slides a touch on hover */
