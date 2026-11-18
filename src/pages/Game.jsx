@@ -11,8 +11,14 @@ import "./game.css";
 
 const CAT_LABEL = { video: "Video slots", book: "Book style", classic: "Classic fruit" };
 
+// Keyed by slug: moving from one game to another mounts a fresh page. Without it, a heading
+// that GSAP split into words would keep showing the previous game's text.
 export default function Game() {
   const { slug } = useParams();
+  return <GamePage key={slug} slug={slug} />;
+}
+
+function GamePage({ slug }) {
   const game = bySlug(slug);
   const root = useRef(null);
   const [playing, setPlaying] = useState(false);
