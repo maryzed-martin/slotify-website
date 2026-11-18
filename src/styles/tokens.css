@@ -63,8 +63,8 @@
   --border: #d8d8de;
   --fg: #121214;
   --muted: #5e5e68;
-  --accent-text: #a84f00;
-  --accent-display: #d9700f;
+  --accent-text: #121214;  /* small text that would be orange in dark mode is black on light: #EE811D is too light for it */
+  --accent-display: var(--orange);
   --hero-bg: var(--blue);
   --word-ghost: #ececf0;
   --header-solid: rgba(255, 255, 255, 0.9);
@@ -78,8 +78,8 @@
     --border: #d8d8de;
     --fg: #121214;
     --muted: #5e5e68;
-    --accent-text: #a84f00;
-    --accent-display: #d9700f;
+    --accent-text: #121214;  /* small text that would be orange in dark mode is black on light: #EE811D is too light for it */
+    --accent-display: var(--orange);
     --hero-bg: var(--blue);
     --word-ghost: #ececf0;
     --header-solid: rgba(255, 255, 255, 0.9);

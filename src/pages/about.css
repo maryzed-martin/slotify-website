@@ -99,7 +99,7 @@
 .products { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .product { --p-bg: var(--blue); --p-fg: var(--white); --p-k: var(--orange); display: flex; flex-direction: column; background: var(--p-bg); color: var(--p-fg); }
 .product--orange { --p-bg: var(--orange); --p-fg: var(--ink); --p-k: var(--white); }
-.product--white { --p-bg: var(--white); --p-fg: var(--ink); --p-k: #a84f00; }
+.product--white { --p-bg: var(--white); --p-fg: var(--ink); --p-k: var(--ink); }
 :root[data-theme="light"] .product--white { --p-bg: var(--surface); }
 @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .product--white { --p-bg: var(--surface); } }
 .product__img { aspect-ratio: 16 / 10; overflow: hidden; }
@@ -129,7 +129,7 @@
 :root[data-theme="light"] .contact__panel { background: var(--surface); }
 @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .contact__panel { background: var(--surface); } }
 .contact__lead { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
-.contact__k { margin: 0; color: #a84f00; font-weight: 800; font-size: 18px; }
+.contact__k { margin: 0; color: var(--ink); font-weight: 800; font-size: 18px; }
 .contact__mail { color: var(--ink); font-weight: 800; font-size: 18px; text-decoration: none; margin-top: -6px; }
 .contact__tri { position: absolute; right: 22px; top: 28px; width: 22px; height: 26px; background: var(--orange); clip-path: polygon(0 0, 100% 50%, 0 100%); }
 .form { display: flex; flex-direction: column; gap: 18px; }
